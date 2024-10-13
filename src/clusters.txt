@@ -1,0 +1,8 @@
+Кластер 1:
+GameField реализуем как SquareMatrix
+
+Кластер 2:
+ClickChain будет содержаться в UserAction. UserAction будет генерироваться в UserCommand.
+
+Кластер 3:
+GameState будет отображаться в HistoryArray
