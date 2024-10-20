@@ -1,0 +1,21 @@
+Последовательность создания объектов:
+    GameController --> GameField
+    GameController --> UserAction
+    GameField --> Cell
+    GameField --> CellFactory
+    CellFactory --> Cell
+    UserAction --> ClickChain
+
+Последовательность обработки событий:
+    User --> UI: Click event
+    UI --> GameController: User action
+    GameController --> UserAction: Create and execute action
+    UserAction --> GameField: Modify field
+    GameField --> GameController: Notify change
+    GameController --> UI: Update view
+
+
+
+•	JavaFX — подойдёт для создания десктопной версии игры. Он поддерживает динамическую графику и обработку событий.
+•	libGDX — кросс-платформенный фреймворк для создания игр на мобильных устройствах и настольных ПК.
+•	JUnit — для тестирования системы.
