@@ -27,7 +27,7 @@ public abstract class UserAction {
 
         @Override
         public void execute(GameField field) {
-            // Реализация обмена местами двух ячеек
+            field.swapCells(clickChain.getX1(), clickChain.getY1(), clickChain.getX2(), clickChain.getY2());
         }
     }
 }

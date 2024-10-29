@@ -1,23 +1,28 @@
 public class GameController {
     private final GameField field;
+    private int score;
+    private final int targetScore;
     private boolean gameOver = false;
 
-    public GameController(CellFactory factory) {
+    public GameController(CellFactory factory, int targetScore) {
         this.field = new GameField(factory);
+        this.targetScore = targetScore;
+        this.score = 0;
     }
 
     // Предусловие: действие должно быть допустимым
-    // Постусловие: поле изменяется в зависимости от действия
+    // Постусловие: поле изменяется в зависимости от действия и проверяется конец игры
     public void handleAction(UserAction action) {
         action.execute(field);
-        checkForMatches();
-        if (isGameOver()) {
-            endGame();
-        }
+        score += field.getScoreFromLastAction();
+        checkGameOver();
     }
 
-    private void checkForMatches() {
-        // Логика проверки совпадений
+    private void checkGameOver() {
+        if (score >= targetScore) {
+            gameOver = true;
+            endGame();
+        }
     }
 
     public boolean isGameOver() {

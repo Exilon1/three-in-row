@@ -7,10 +7,17 @@ import static org.junit.Assert.assertTrue;
 public class GameControllerTest {
     @Test
     public void testGameOver() {
-        GameController controller = new GameController(new CellFactory(Arrays.asList("Type1", "Type2")));
+        CellFactory factory = new CellFactory(Arrays.asList("Type1", "Type2"));
+        int targetScore = 50;
+        GameController controller = new GameController(factory, targetScore);
 
-        // Симулируем ситуацию конца игры
-        controller.handleAction(new UserAction.SelectCell(0, 0));
+        // Множество обменов, чтобы набрать очки и достичь конца игры
+        for (int i = 0; i < 5; i++) {
+            ClickChain chain = new ClickChain(0, 0, 0, 1); // Предполагаем, что эта пара успешна
+            UserAction action = new UserAction.SwapCells(chain);
+            controller.handleAction(action);
+        }
+
         assertTrue(controller.isGameOver());
     }
 }

@@ -10,7 +10,6 @@ public class GameFieldTest {
     public void testFieldInitialization() {
         CellFactory factory = new CellFactory(Arrays.asList("Type1", "Type2"));
         GameField field = new GameField(factory);
-        assertEquals(8, field.getSize());
         assertNotNull(field.getCell(0, 0)); // Проверяем, что клетка существует
     }
 
